@@ -1,4 +1,4 @@
-import { ReactComponent as SalviaLogoIcon } from '../images/salvia-logo.svg'
+import { ReactComponent as SalviaLogoIcon } from '../images/wtf-logo.svg'
 import { Link } from 'react-router-dom'
 
 const SalviaLogo = () => {
