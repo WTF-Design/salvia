@@ -157,7 +157,7 @@ function createPDF(res, jsonReport, lang) {
 
     struct.add(
       doc.struct('H1', () => {
-        doc.fontSize(26).fillColor('#FF0078').text(translate('salvia.report-title')).moveDown(1)
+        doc.fontSize(26).fillColor('#E61D72').text(translate('salvia.report-title')).moveDown(1)
       }),
     )
 
@@ -245,7 +245,7 @@ function createReportDetails(doc, jsonReport, viewport) {
       doc.text(translate('salvia.tested-domain'), { continued: true })
     },
     doc.struct('Link', () => {
-      doc.fillColor('#FF0078').text(domain, { link: encodeURI(domain), continued: true })
+      doc.fillColor('#E61D72').text(domain, { link: encodeURI(domain), continued: true })
     }),
     () => {
       doc
@@ -261,7 +261,7 @@ function createReportDetails(doc, jsonReport, viewport) {
             doc.text(translate('salvia.report.salvia')).text(" (", {continued: true})
       },
       doc.struct('Link', () => {
-        doc.fillColor('#FF0078').text(translate('salvia.github.url'), {
+        doc.fillColor('#E61D72').text(translate('salvia.github.url'), {
           link: translate('salvia.github.url'),
           continued: true,
         })
@@ -270,7 +270,7 @@ function createReportDetails(doc, jsonReport, viewport) {
             doc.fillColor('black').text(translate("salvia.report.closing-bracket"), { link: null, continued: true }).text(translate('salvia.report.qualweb'), { continued: true }).text(" (", { continued: true })
         },
         doc.struct('Link', () => {
-            doc.fillColor('#FF0078').text(translate('salvia.qualweb.url'), {
+            doc.fillColor('#E61D72').text(translate('salvia.qualweb.url'), {
                 link: translate('salvia.qualweb.url'),
                 continued: true,
             })
@@ -281,7 +281,7 @@ function createReportDetails(doc, jsonReport, viewport) {
           .text(translate('salvia.report.act-rules') + " (", { /*link: null,*/ continued: true })
       },
       doc.struct('Link', () => {
-        doc.fillColor('#FF0078').text(translate('salvia.act-rules.url'), {
+        doc.fillColor('#E61D72').text(translate('salvia.act-rules.url'), {
           link: translate('salvia.act-rules.url'),
           continued: true,
         })
@@ -302,7 +302,7 @@ function addTestedPages(testedPages, doc, urlList) {
     doc.struct('H2', () => {
       doc
         .fontSize(22)
-        .fillColor('#FF0078')
+        .fillColor('#E61D72')
         .text(translate('salvia.report.tested-pages.summary'))
         .moveDown(1)
     }),
@@ -318,7 +318,7 @@ function addTestedPages(testedPages, doc, urlList) {
     doc.struct('Artifact', { type: 'Layout' }, () =>
       doc
         .lineWidth(2)
-        .strokeColor('#FF0078')
+        .strokeColor('#E61D72')
         .moveTo(doc.x, doc.y)
         .lineTo(doc.x + pageWidth, doc.y)
         .stroke()
@@ -379,7 +379,7 @@ function addCompletedTests(
 
   completedTests.add(
     doc.struct('H3', () => {
-      doc.fontSize(16).fillColor('#FF0078').text(translate('salvia.report.completed-tests.title'))
+      doc.fontSize(16).fillColor('#E61D72').text(translate('salvia.report.completed-tests.title'))
     }),
   )
 
@@ -387,7 +387,7 @@ function addCompletedTests(
     doc.struct('Artifact', { type: 'Layout' }, () =>
       doc
         .lineWidth(2)
-        .strokeColor('#FF0078')
+        .strokeColor('#E61D72')
         .moveTo(doc.x, doc.y)
         .lineTo(doc.x + pageWidth, doc.y)
         .stroke()
@@ -495,7 +495,7 @@ function createListItem(item, doc, options) {
       doc.circle(doc.x - textIndent + bulletRadius, doc.y + 5, bulletRadius).fill('black')
     }),
   )
-  const color = item.highlight ? '#FF0078' : 'black'
+  const color = item.highlight ? '#E61D72' : 'black'
   const itemContent = item.isLink
     ? doc.struct('Link', () =>
         doc
@@ -540,7 +540,7 @@ function createWCAGListItem(item, doc, options) {
           ),
       doc.struct('Link', () =>
         doc
-          .fillColor('#FF0078')
+          .fillColor('#E61D72')
           .text(url, { link: url, width: pageWidth - textIndent, continued: true }),
       ),
       () => doc.fillColor('black').text(')', { link: false }),
@@ -601,7 +601,7 @@ function createRuleListItem(item, doc, options) {
             continued: true,
           }),
       doc.struct('Link', () =>
-        doc.fillColor('#FF0078').text(item.url, { link: item.url, continued: true }),
+        doc.fillColor('#E61D72').text(item.url, { link: item.url, continued: true }),
       ),
       () => doc.fillColor('black').text(')', { link: false }),
     ]),
@@ -620,7 +620,7 @@ function createFlawsChapter(doc, accessibilityFlaws, flawsMap, flawsBookmark) {
     doc.struct('H2', () => {
       doc
         .fontSize(22)
-        .fillColor('#FF0078')
+        .fillColor('#E61D72')
         .text(translate('salvia.report.accessibility-flaws.title'))
     }),
   )
@@ -645,14 +645,14 @@ function createFlawsChapter(doc, accessibilityFlaws, flawsMap, flawsBookmark) {
         flawsBookmark.addItem(item.code)
         accessibilityFlaws.add(
           doc.struct('H3', () =>
-            doc.fillColor('#FF0078').text(item.code + ' – ' + item.name, startPos, doc.y),
+            doc.fillColor('#E61D72').text(item.code + ' – ' + item.name, startPos, doc.y),
           ),
         ) //check
         accessibilityFlaws.add(
           doc.struct('Artifact', { type: 'Layout' }, () =>
             doc
               .lineWidth(2)
-              .strokeColor('#FF0078')
+              .strokeColor('#E61D72')
               .moveTo(doc.x, doc.y)
               .lineTo(doc.x + pageWidth, doc.y)
               .stroke()
@@ -675,7 +675,7 @@ function createFlawsChapter(doc, accessibilityFlaws, flawsMap, flawsBookmark) {
             doc
               .font('DejaVuSans')
               .fontSize(12)
-              .fillColor('#FF0078')
+              .fillColor('#E61D72')
               .text(translate('salvia.report.page'), startPos, doc.y, { continued: true }),
           doc.struct('Link', () => {
             doc.text(item.url.inputUrl, { link: encodeURI(item.url.inputUrl), continued: true })
@@ -691,7 +691,7 @@ function createFlawsChapter(doc, accessibilityFlaws, flawsMap, flawsBookmark) {
         doc.struct('Artifact', { type: 'Layout' }, () =>
           doc
             .lineWidth(1)
-            .strokeColor('#FF0078')
+            .strokeColor('#E61D72')
             .moveTo(doc.x, doc.y)
             .lineTo(doc.x + pageWidth, doc.y)
             .stroke()
@@ -710,7 +710,7 @@ function createFlawsChapter(doc, accessibilityFlaws, flawsMap, flawsBookmark) {
               doc.struct('Artifact', { type: 'Layout' }, () =>
                 doc
                   .lineWidth(1)
-                  .strokeColor('#FF0078')
+                  .strokeColor('#E61D72')
                   .moveTo(doc.x, doc.y)
                   .lineTo(doc.x + pageWidth - contentIndent, doc.y)
                   .stroke()
@@ -724,7 +724,7 @@ function createFlawsChapter(doc, accessibilityFlaws, flawsMap, flawsBookmark) {
             const element = doc.struct('P', [
               () =>
                 doc
-                  .fillColor('#FF0078')
+                  .fillColor('#E61D72')
                   .fontSize(12)
                   .text(translate('salvia.report.element'), indentedContentPos, doc.y),
               () => doc.fontSize(10).text(el.pointer),
@@ -781,7 +781,7 @@ function createFlawsChapter(doc, accessibilityFlaws, flawsMap, flawsBookmark) {
             doc.struct('P', [
               () =>
                 doc
-                  .fillColor('#FF0078')
+                  .fillColor('#E61D72')
                   .font('DejaVuSans')
                   .fontSize(12)
                   .text(translate('salvia.report.result'), { continued: true }),
